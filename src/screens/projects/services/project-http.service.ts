@@ -24,7 +24,7 @@ export class ProjectHttpService implements ProjectService {
   }
 
   edit(project: Project): Observable<Project> {
-    return this.httpClient.put(this.url, project).pipe(map(() => project));
+    return this.httpClient.put(this.url, project).pipe(map((res: any) => res.data));
   }
 
   delete(project: Project): Observable<Project> {
