@@ -1,0 +1,46 @@
+<article class="project-card panel is-primary">
+  <div class="panel-heading">
+    <div class="header">
+      <app-removable-item (removeEvent)="onRemoveProject()">
+        <app-editable-content
+          [content]="project.name"
+          (saveEvent)="saveContent($event)"
+        >
+        </app-editable-content>
+      </app-removable-item>
+    </div>
+  </div>
+  <div class="panel-block">
+    <p class="control has-icons-left">
+      TODO
+    </p>
+  </div>
+  <div
+    *ngFor="let task of project.tasks | filter: 'finished':false"
+    class="panel-block"
+  >
+    <app-task-item [task]="task" (taskEvent)="onTaskEvent($event)">
+    </app-task-item>
+  </div>
+
+  <div class="panel-block">
+    <p class="control has-icons-left">
+      DONE
+    </p>
+  </div>
+  <div
+    *ngFor="let task of project.tasks | filter: 'finished':true"
+    class="panel-block"
+  >
+    <app-task-item [task]="task" (taskEvent)="onTaskEvent($event)">
+    </app-task-item>
+  </div>
+
+  <div class="panel-block">
+    <p class="control has-icons-left">
+      Add more...
+    </p>
+  </div>
+  <app-task-create-form (createEvent)="onCreateTask($event)">
+  </app-task-create-form>
+</article>

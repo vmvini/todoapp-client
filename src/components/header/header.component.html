@@ -1,0 +1,40 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://bulma.io">
+      TO-DO APP
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div *ngIf="user" class="navbar-start">
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Menu
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            {{user.email}}
+          </a>
+          <a (click)="logout()" class="navbar-item">
+            logout
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!user" class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a (click)="signup()"  class="button is-primary">
+            <strong>Sign up</strong>
+          </a>
+          <a (click)="login()" class="button is-light">
+            Log in
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

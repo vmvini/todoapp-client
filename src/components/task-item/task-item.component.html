@@ -1,0 +1,19 @@
+<div [tooltip]="task.period.finish | amDateFormat: 'YYYY-MM-DD HH:mm'" class="task-item-content" *ngIf="task.finished">
+  {{ task.description }}
+</div>
+
+<div
+  [tooltip]="task.period.finish | amDateFormat: 'YYYY-MM-DD HH:mm'"
+  *ngIf="!task.finished"
+  class="task-item-content"
+>
+  <app-checkbox [isChecked]="isChecked" (changeEvent)="onComplete()">
+  </app-checkbox>
+  <app-removable-item (removeEvent)="onRemoveTask()">
+    <app-editable-content
+      [content]="task.description"
+      (saveEvent)="saveContent($event)"
+    >
+    </app-editable-content>
+  </app-removable-item>
+</div>

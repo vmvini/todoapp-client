@@ -1,0 +1,74 @@
+<form class="user-create" [formGroup]="form" (submit)="onSubmit()">
+  <fieldset>
+    <legend>Create New Account</legend>
+
+    <div class="field">
+      <label class="label" for="userCreateName">Name:</label>
+      <div class="control">
+        <input
+          [ngClass]="{'is-danger': submitted && f.name.errors}"
+          type="text"
+          class="input"
+          id="userCreateName"
+          formControlName="name"
+        />
+      </div>
+    </div>
+    <div *ngIf="submitted && f.name.errors">
+      <p *ngIf="f.name.errors.required" class="help is-danger">Name is required</p>
+    </div>
+
+    <div class="field">
+      <label class="label" for="userCreateEmail">Email:</label>
+      <div class="control">
+        <input
+          [ngClass]="{'is-danger': submitted && f.email.errors}"
+          class="input"
+          type="email"
+          id="userCreateEmail"
+          formControlName="email"
+        />
+      </div>
+    </div>
+    <div *ngIf="submitted && f.email.errors">
+      <p *ngIf="f.email.errors.required" class="help is-danger">Email is required</p>
+      <p *ngIf="f.email.errors.email" class="help is-danger">Email is invalid</p>
+    </div>
+
+    <div class="field">
+      <label class="label" for="userCreatePass">Password:</label>
+      <div class="control">
+        <input
+          [ngClass]="{'is-danger': submitted && f.password.errors}"
+          class="input"
+          type="password"
+          id="userCreatePass"
+          formControlName="password"
+        />
+      </div>
+    </div>
+    <div *ngIf="submitted && f.password.errors">
+      <p *ngIf="f.password.errors.required" class="help is-danger">Password is required</p>
+      <p *ngIf="f.password.errors.password" class="help is-danger">Your password must contain 9 characters and at least one lowercase letter, one uppercase, one number, one special character.</p>
+    </div>
+
+    <div class="field">
+      <label class="label" for="confpass">Confirm Password:</label>
+      <div class="control">
+        <input
+          [ngClass]="{'is-danger': submitted && f.confirmPassword.errors}"
+          class="input"
+          type="password"
+          id="confpass"
+          name="confpass"
+          formControlName="confirmPassword"
+        />
+      </div>
+    </div>
+    <div *ngIf="submitted && f.confirmPassword.errors">
+      <p *ngIf="f.confirmPassword.errors.required" class="help is-danger">Confirm password is required</p>
+      <p *ngIf="f.confirmPassword.errors.match" class="help is-danger">Confirm Password doesnt match</p>
+    </div>
+  </fieldset>
+  <button type="submit" class="button is-link">Submit</button>
+</form>

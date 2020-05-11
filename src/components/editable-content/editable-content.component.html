@@ -1,0 +1,21 @@
+<div class="editable-content">
+  <div *ngIf="isEdit" class="field">
+    <div class="control">
+      <input class="input"  [(ngModel)]="value" type="text" />
+    </div>
+  </div>
+
+  <p *ngIf="!isEdit">{{ content }}</p>
+  <i
+    *ngIf="!isEdit"
+    (click)="turnEditMode()"
+    class="fa fa-pencil"
+    aria-hidden="true"
+  ></i>
+  <i
+    *ngIf="isEdit"
+    (click)="save()"
+    class="fa fa-floppy-o"
+    aria-hidden="true"
+  ></i>
+</div>

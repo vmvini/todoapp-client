@@ -1,0 +1,41 @@
+<form class="task-form" [formGroup]="form" (submit)="onSubmit()">
+  <fieldset>
+    <div class="field">
+      <label class="label">Description:</label>
+      <div class="control">
+        <input
+          class="input"
+          [ngClass]="{'is-danger': submitted && f.description.errors}"
+          type="text"
+          name="taskName"
+          formControlName="description"
+        />
+      </div>
+    </div>
+    <div *ngIf="submitted && f.description.errors">
+      <p *ngIf="f.description.errors.required" class="help is-danger">Description is required</p>
+    </div>
+
+    <div class="field">
+      <label class="label">Creation Date:</label>
+      <div class="control">
+        <input class="input" [ngClass]="{'is-danger': submitted && f.startDate.errors}" type="date" formControlName="startDate" />
+      </div>
+    </div>
+    <div *ngIf="submitted && f.startDate.errors">
+      <p *ngIf="f.startDate.errors.required" class="help is-danger">Start dte is required</p>
+    </div>
+
+    <div class="field">
+      <label class="label">End Date:</label>
+      <div class="control">
+        <input class="input" [ngClass]="{'is-danger': submitted && f.startDate.errors}" type="date" formControlName="endDate" />
+      </div>
+    </div>
+    <div *ngIf="submitted && f.endDate.errors">
+      <p *ngIf="f.endDate.errors.required" class="help is-danger">End date is required</p>
+    </div>
+  </fieldset>
+  <br />
+  <button type="submit" class="button is-primary">Submit</button>
+</form>

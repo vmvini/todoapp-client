@@ -1,0 +1,40 @@
+<form class="login-container" [formGroup]="form" (submit)="onSubmit()">
+  <fieldset>
+
+    <div class="field">
+      <label class="label" for="loginEmail">Email:</label>
+      <div class="control">
+        <input
+          [ngClass]="{'is-danger': submitted && f.email.errors}"
+          type="email"
+          class="input"
+          id="loginEmail"
+          formControlName="email"
+        />
+      </div>
+      
+    </div>
+    <div *ngIf="submitted && f.email.errors">
+      <p *ngIf="f.email.errors.required" class="help is-danger">Email is required</p>
+      <p *ngIf="f.email.errors.email" class="help is-danger">Email is invalid</p>
+    </div>
+
+    <div class="field">
+      <label class="label" for="loginPass">Password:</label>
+      <div class="control">
+        <input
+          [ngClass]="{'is-danger': submitted && f.password.errors}"
+          class="input"
+          type="password"
+          id="loginPass"
+          formControlName="password"
+        />
+      </div>
+    </div>
+    <div *ngIf="submitted && f.password.errors">
+      <p *ngIf="f.password.errors.required" class="help is-danger">Password is required</p>
+    </div>
+  </fieldset>
+  <br />
+  <button type="submit" class="button is-link">Submit</button>
+</form>
