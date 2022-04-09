@@ -22,7 +22,7 @@
     "bulma": "^0.8.2",
     "font-awesome": "^4.7.0",
     "jwt-decode": "^2.2.0",
-    "moment": "^2.25.3",
+    "moment": "^2.29.2",
     "ng2-tooltip-directive": "^2.9.20",
     "ngx-moment": "^3.5.0",
     "rxjs": "~6.5.4",
